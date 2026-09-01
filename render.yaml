@@ -1,13 +1,15 @@
 services:
   - type: web
-    name: atoztoys-v10
+    name: atoztoys-v12
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    startCommand: gunicorn app:app
     envVars:
       - key: DATABASE_URL
         sync: false
-      - key: ADMIN_MOBILE
+      - key: SECRET_KEY
+        sync: false
+      - key: ADMIN_USER
         sync: false
       - key: ADMIN_PASSWORD
         sync: false
