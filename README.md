@@ -1,33 +1,10 @@
-# AtoZ Toys & Keychain V9 — Production-Ready Foundation
+# Atoztoys Advanced V10
 
-## Included
-- Responsive colorful kids-toy storefront
-- PostgreSQL database schema (users, products, images, orders, order items, settings)
-- Admin authentication via environment-configured admin account
-- Admin dashboard: products, stock, orders, editable website text
-- Multi-image product uploads with basic type/size validation
-- Customer registration/login
-- COD order creation with stock locking/decrementing
-- Health endpoint
-- Render/host start command
+Folder-free Render/GitHub root. All deploy files are at repository root.
 
-## Deploy
-Set these environment variables on your host:
-- DATABASE_URL = your managed PostgreSQL connection string
-- ADMIN_MOBILE = your admin mobile/login
-- ADMIN_PASSWORD = a strong unique admin password
+Build: `pip install -r requirements.txt`
+Start: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 
-Build:
-pip install -r requirements.txt
+Required Render environment variables: DATABASE_URL, ADMIN_MOBILE, ADMIN_PASSWORD.
 
-Start:
-uvicorn app.main:app --host 0.0.0.0 --port $PORT
-
-## Important production integrations
-This foundation does NOT pretend that payment/courier accounts are already connected.
-For real online payments, add a merchant payment gateway and webhook verification.
-For shipping, add a courier/shipping API and shipment tracking webhooks.
-For images at scale, use S3-compatible/object storage rather than local disk.
-Use HTTPS, secure cookies/session rotation, CSRF protections where applicable,
-rate limiting, image scanning, backups, monitoring and secrets management before
-taking substantial customer traffic.
+Admin is accessed from the live site by tapping the user/login button and signing in with ADMIN_MOBILE + ADMIN_PASSWORD.
